@@ -1663,7 +1663,7 @@ InputCommand(char *command)
                    "shogi"
 #endif
                 );
-            printf("debug=1 setboard=0 sigint=0 done=1\n");
+            printf("debug=1 setboard=0 sigint=0 usermove=1 done=1\n");
         }
         else if ((strcmp(s, "set") == 0) ||
                  (strcmp(s, "edit") == 0))
@@ -1971,6 +1971,9 @@ InputCommand(char *command)
         }
         else
         {
+            if (strcmp(s, "usermove") == 0)
+                sscanf(sx + 9, "%s", s);
+
             if (flag.mate)
             {
                 ok = true;
