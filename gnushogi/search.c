@@ -145,7 +145,8 @@ SelectMove(short side, SelectMove_mode iop)
     static short i, tempb, tempc, tempsf, tempst, xside, rpt;
     static short alpha, beta, score;
     static struct GameRec  *g;
-    short sqking, in_check, blockable;
+    short sqking, in_check;
+    bool blockable;
 
 #ifdef BOOKTEST
     printf("hashbd = %ld (hashkey >> 16)|side = %d\n",
@@ -521,7 +522,8 @@ search(short side,
 {
     short j, pnt;
     short tempb, tempc, tempsf, tempst;
-    short xside, pbst, score, rcnt, in_check, blockable;
+    short xside, pbst, score, rcnt, in_check;
+    bool blockable;
     unsigned short mv, nxtline[MAXDEPTH];
     struct leaf  *node, tmp;
     short best = -(SCORE_LIMIT + 3000);

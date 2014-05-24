@@ -279,7 +279,7 @@ BVerifyMove(char *s, unsigned short *mv, int moveno)
 
     if (cnt == 1)
     {
-        short blockable;
+        bool blockable;
 
         MakeMove(opponent, &xnode, &tempb,
                  &tempc, &tempsf, &tempst, &INCscore);

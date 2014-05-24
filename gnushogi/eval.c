@@ -711,7 +711,7 @@ evaluate(short side,
          short beta,
          short INCscore,
          short *InChk,     /* output Check flag     */
-         short *blockable) /* king threat blockable */
+         bool *blockable) /* king threat blockable */
 {
     short xside;
     short s;

@@ -997,13 +997,13 @@ extern void Initialize_moves(void);
 extern short generate_move_flags;
 
 extern void MoveList(short side, short ply,
-                     short in_check, short blockable);
+                     short in_check, bool blockable);
 extern void CaptureList(short side, short ply,
-                        short in_check, short blockable);
+                        short in_check, bool blockable);
 
 /* from attacks.c */
-extern int
-SqAttacked(short square, short side, short *blockable);
+extern bool
+SqAttacked(short square, short side, bool *blockable);
 
 extern void
 MakeMove(short side,
@@ -1032,7 +1032,7 @@ evaluate(short side,
          short beta,
          short INCscore,
          short *InChk,
-         short *blockable);
+         bool *blockable);
 
 extern short ScorePosition(short side);
 extern void  ExaminePosition(short side);
@@ -1103,7 +1103,7 @@ extern void  ElapsedTime(ElapsedTime_mode iop);
 
 extern short
 IsCheckmate(short side, short in_check,
-            short blockable); /* genmoves.c */
+            bool blockable); /* genmoves.c */
 
 
 typedef enum

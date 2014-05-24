@@ -234,7 +234,8 @@ GenUnmakeMove(short side,
 static void
 gives_check_flag(unsigned short *flags, short side, short f, short t)
 {
-    short tempb, tempc, blockable, promote_piece;
+    short tempb, tempc, promote_piece;
+    bool blockable;
     promote_piece = (*flags & promote) != 0;
     GenMakeMove(side, f, t, &tempb, &tempc, promote_piece);
 
@@ -270,7 +271,8 @@ Link(short side,
         else if (InCheck)
         {
             /* only moves out of check */
-            short tempb, tempc, sq, threat, blockable, promote_piece;
+            short tempb, tempc, sq, threat, promote_piece;
+            bool blockable;
             promote_piece = (node->flags & promote) != 0;
             GenMakeMove(side, node->f, node->t,
                         &tempb, &tempc, promote_piece);
@@ -1287,7 +1289,7 @@ LinkCheckDrops(short side, short xside, short ply)
 
 void
 MoveList(short side, short ply,
-         short in_check, short blockable)
+         short in_check, bool blockable)
 {
     short i, xside, u;
     struct leaf  *firstnode;
@@ -1421,7 +1423,7 @@ MoveList(short side, short ply,
 
 void
 CaptureList(short side, short ply,
-            short in_check, short blockable)
+            short in_check, bool blockable)
 {
     short u, sq, xside;
 #ifdef SAVE_NEXTPOS
@@ -1548,7 +1550,7 @@ CaptureList(short side, short ply,
  */
 
 short
-IsCheckmate(short side, short in_check, short blockable)
+IsCheckmate(short side, short in_check, bool blockable)
 {
     short u, sq, xside;
 #ifdef SAVE_NEXTPOS
@@ -1558,7 +1560,8 @@ IsCheckmate(short side, short in_check, short blockable)
 #endif
     short i, piece;
     small_short *PL;
-    short tempb, tempc, ksq, threat, dummy, sqking;
+    short tempb, tempc, ksq, threat, sqking;
+    bool dummy;
     short InCheck;
 
     xside = side ^ 1;

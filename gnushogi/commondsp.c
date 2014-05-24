@@ -305,7 +305,7 @@ VerifyMove(char *s, VerifyMove_mode iop, unsigned short *mv)
 
     if ((cnt == 1) && (xnode.score > DONTUSE))
     {
-        short blocked;
+        bool blocked;
 
         MakeMove(opponent, &xnode, &tempb, &tempc,
                  &tempsf, &tempst, &INCscore);
@@ -1332,7 +1332,7 @@ Undo(void)
 
 static void
 TestSpeed(void(*f)(short side, short ply,
-                   short in_check, short blockable),
+                   short in_check, bool blockable),
           unsigned j)
 {
 #ifdef test
