@@ -528,7 +528,7 @@ search(short side,
     struct leaf  *node, tmp;
     short best = -(SCORE_LIMIT + 3000);
     short bestwidth = 0;
-    short mustcut;
+    bool mustcut;
 
 #ifdef NULLMOVE
     short PVsave;

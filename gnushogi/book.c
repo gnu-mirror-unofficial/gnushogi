@@ -76,7 +76,7 @@ static ULONG bhashkey;
 static void
 Balgbr(short f, short t, short flags)
 {
-    short promoted = false;
+    bool promoted = false;
 
     if ((f & 0x80) != 0)
     {
@@ -248,7 +248,7 @@ bkdisplay(char *s, int cnt, int moveno)
  * opponent. If a match is found, make the move on the board.
  */
 
-static int
+static bool
 BVerifyMove(char *s, unsigned short *mv, int moveno)
 {
     static short pnt, tempb, tempc, tempsf, tempst, cnt;
@@ -638,7 +638,7 @@ GetOpenings(void)
 {
     ULONG currentoffset = 0;
     short i;
-    int first;
+    bool first;
     unsigned short side;
     short c;
     USHORT mv, flags;
@@ -895,7 +895,7 @@ GetOpenings(void)
  * book transpositions.
  */
 
-int
+bool
 OpeningBook(unsigned short *hint)
 {
     ULONG currentoffset;

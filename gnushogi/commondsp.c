@@ -371,7 +371,8 @@ static int
 parser(char *f, short *fpiece)
 {
     int c1, r1, c2, r2;
-    short i, p = false;
+    short i;
+    bool p = false;
 
     if (*f == '+')
         f++, p = true;
@@ -1499,7 +1500,7 @@ void
 InputCommand(char *command)
 {
 #ifdef QUIETBACKGROUND
-    short have_shown_prompt = false;
+    bool have_shown_prompt = false;
 #endif
     short ok, done, is_move = false;
     unsigned short mv;

@@ -95,7 +95,8 @@ static short
 ScanPiece(char **s, small_short *side,
           small_short *piece, small_short *square)
 {
-    short isp, isw, c, r;
+    bool isp;
+    short isw, c, r;
 
     /* determine promotion status */
     if (**s == '+')

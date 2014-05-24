@@ -296,7 +296,7 @@ const small_short inunmap[NO_SQUARES] =
 };
 #endif
 
-int InitFlag = false;
+static bool InitFlag = false;
 
 
 #if defined SAVE_NEXTPOS

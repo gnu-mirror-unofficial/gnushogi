@@ -304,7 +304,7 @@ ZeroTTable(void)
 
 
 #ifdef HASHFILE
-int
+static bool
 Fbdcmp(unsigned char *a, unsigned char *b)
 {
     int i;
@@ -387,11 +387,11 @@ ProbeFTable(short side,
                     *beta = *score + 1;
             }
 
-            return (true);
+            return true;
         }
     }
 
-    return (false);
+    return false;
 }
 
 

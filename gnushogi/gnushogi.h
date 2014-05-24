@@ -911,7 +911,7 @@ extern void Initialize_dist(void); /* init.c */
 extern void Initialize_eval(void); /* eval.c */
 extern void NewGame(void);
 extern void GetOpenings(void);
-extern int  OpeningBook(unsigned short *hint);
+extern bool OpeningBook(unsigned short *hint);
 
 typedef enum
 {

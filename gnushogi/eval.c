@@ -37,7 +37,7 @@
 
 int EADD = 0;       /* number of writes to the cache table */
 int EGET = 0;       /* number of hits to the cache table */
-int PUTVAR = false; /* shall the current scoring be cached? */
+static bool PUTVAR = false; /* shall the current scoring be cached? */
 
 
 /* Pieces and colors of initial board setup */
@@ -340,7 +340,7 @@ on_csquare(short side, short piece, short square)
 
 
 #ifndef MINISHOGI
-inline static short
+inline static bool
 on_column(short side, short piece, short c)
 {
     short sq;
@@ -358,7 +358,7 @@ on_column(short side, short piece, short c)
 #define empty_csquare(side, square) \
   (board[csquare(side, square)] == no_piece)
 
-inline static short
+inline static bool
 on_left_side(short side, short piece)
 {
     short c;
@@ -373,7 +373,7 @@ on_left_side(short side, short piece)
 }
 
 
-inline static short
+inline static bool
 on_right_side(short side, short piece)
 {
     short c;
@@ -1095,7 +1095,8 @@ KingScan(short sq)
 
     short s;
     short u, ptyp;
-    short ok, ds;
+    short ds;
+    bool ok;
 
     /* Penalties, if a king can be threatened by checks. */
 
@@ -1205,7 +1206,7 @@ KingScan(short sq)
 }
 
 
-static short checked_trapped;
+static bool checked_trapped;
 
 
 /*
@@ -1213,7 +1214,7 @@ static short checked_trapped;
  * must be true: c1 == color[sq] c2 == otherside[c1]
  */
 
-inline int
+static inline bool
 trapped(short sq)
 {
     short u, ptyp;
@@ -1461,7 +1462,8 @@ static inline int
 KnightValue(short sq)
 {
     short s = 0, ad;
-    short ds, checked_trapped = false;
+    short ds;
+    bool checked_trapped = false;
     short c = column(sq);
 
     PromotionZoneDistanceValue(sq, 1);

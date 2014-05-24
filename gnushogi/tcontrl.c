@@ -133,7 +133,7 @@ TimeCalc()
 
 void SetResponseTime(short side)
 {
-    int DetermineTCcount = true;
+    bool DetermineTCcount = true;
 
     if (TCflag)
     {

@@ -38,11 +38,11 @@ static short *TrP;
 
 static struct leaf  *node;
 static short sqking, sqxking;
-static short InCheck = false, GenerateAllMoves = false;
-static short check_determined = false;
+static bool InCheck = false, GenerateAllMoves = false;
+static bool check_determined = false;
 
-short deepsearchcut = true;
-short tas = false, taxs = false, ssa = false;
+static bool deepsearchcut = true;
+static bool tas = false, taxs = false;
 
 short generate_move_flags = false;
 
@@ -591,7 +591,7 @@ LinkMove(short ply, short f,
 {
     short s = 0;
     short side, piece, mv;
-    short flag_tsume, try_link = true;
+    bool flag_tsume, try_link = true;
     short c1, c2, ds, is_drop = f > NO_SQUARES;
     unsigned long as = 0;
 
@@ -741,7 +741,7 @@ LinkMove(short ply, short f,
     else
     {
         /* bonus for moves (non-drops) */
-        int consider_last = false;
+        bool consider_last = false;
 
         if (in_endgame_stage && Captured[side][gold])
             s += 10;
