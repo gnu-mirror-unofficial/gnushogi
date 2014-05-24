@@ -46,6 +46,18 @@
 
 #include <stdarg.h>
 
+#ifdef HAVE_STDBOOL_H
+# include <stdbool.h>
+#else
+# ifndef HAVE__BOOL
+#  define _Bool signed char
+# endif
+# define bool _Bool
+# define false 0
+# define true 1
+# define __bool_true_false_are_defined 1
+#endif
+
 /*
  * Display options.
  */
@@ -241,15 +253,6 @@ extern void movealgbr(short m, char *s);
 /* constants */
 /* FIXME ? */
 #define OPENING_HINT 0x141d /* P7g-7f (20->29) */
-
-/* truth values */
-#ifndef false
-#define false 0
-#endif
-
-#ifndef true
-#define true  1
-#endif
 
 /* colors */
 #define black   0
