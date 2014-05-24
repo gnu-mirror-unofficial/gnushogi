@@ -37,7 +37,7 @@
 #define MAX_OPENING_SEQUENCE 20
 #define MAX_PATTERN          200
 
-short xboard = false;
+bool xboard = false;
 
 small_short pattern_data[MAX_PATTERN_DATA];
 

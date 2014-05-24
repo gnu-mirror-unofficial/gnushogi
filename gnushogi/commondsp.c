@@ -55,7 +55,7 @@ int mycnt1, mycnt2;
 static char *InPtr;
 struct display *dsp = &raw_display;
 
-short xboard = false;
+bool xboard = false;
 
 #if defined(BOOKTEST)
 
