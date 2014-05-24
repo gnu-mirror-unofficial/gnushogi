@@ -1893,11 +1893,19 @@ InputCommand(char *command)
         }
         else if (strcmp(s, "option") == 0)
         {
-            sscanf(sx, "option tsume=%hd", &flag.tsume) ||
-            sscanf(sx, "option hash=%hd",  &flag.hash)  ||
-            sscanf(sx, "option Hash-file search depth=%hd", &HashDepth)    ||
-            sscanf(sx, "option Hash-file move number=%hd", &HashMoveLimit) ||
-            sscanf(sx, "option contempt=%hd", &contempt);
+            do {
+                if (sscanf(sx, "option tsume=%hd", &flag.tsume) == 1)
+                    break;
+                if (sscanf(sx, "option hash=%hd",  &flag.hash) == 1)
+                    break;
+                if (sscanf(sx, "option Hash-file search depth=%hd", &HashDepth) == 1)
+                    break;
+                if (sscanf(sx, "option Hash-file move number=%hd", &HashMoveLimit) == 1)
+                    break;
+                if (sscanf(sx, "option contempt=%hd", &contempt) == 1)
+                    break;
+                dsp->AlwaysShowMessage("Unknown '%s'", sx);
+            } while(0);
         }
         else if (strcmp(s, "tsume") == 0)
         {
