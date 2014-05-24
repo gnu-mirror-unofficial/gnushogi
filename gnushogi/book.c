@@ -594,7 +594,7 @@ static void WriteAdmin(void)
     write(gfd, (char *)&ADMIN, sizeof_gdxadmin);
 }
 
-static void WriteData(ULONG offset, int *mustwrite)
+static void WriteData(ULONG offset, bool *mustwrite)
 {
     if (!*mustwrite)
         return;
@@ -700,14 +700,14 @@ GetOpenings(void)
 
             for (x = 0; x < B.booksize; x++)
             {
-                int mustwrite = true;
+                bool mustwrite = true;
                 WriteData(sizeof_gdxadmin + x* sizeof_gdxdata, &mustwrite);
             }
         }
 
         if (gfd >= 0)
         {
-            int mustwrite = false;
+            bool mustwrite = false;
             /* setvbuf(fd, buffr, _IOFBF, 2048); */
             side = black;
             hashbd = hashkey = 0;
