@@ -754,7 +754,7 @@ extern short stage, stage2;
 
 extern short ahead, hash;
 extern short balance[2];
-extern small_short ChkFlag[], CptrFlag[], TesujiFlag[];
+extern bool ChkFlag[], CptrFlag[], TesujiFlag[];
 extern short Pscore[], Tscore[];
 extern /*unsigned*/ short rehash;  /* -1 is used as a flag --tpm */
 extern unsigned int ttbllimit;

@@ -40,7 +40,7 @@ char  *Lang = NULL;
 
 short FROMsquare, TOsquare;
 
-small_short ChkFlag[MAXDEPTH], CptrFlag[MAXDEPTH], TesujiFlag[MAXDEPTH];
+bool ChkFlag[MAXDEPTH], CptrFlag[MAXDEPTH], TesujiFlag[MAXDEPTH]; /* FIXME: turn into bitfields ? */
 short Pscore[MAXDEPTH], Tscore[MAXDEPTH];
 small_short Pindex[NO_SQUARES];
 
