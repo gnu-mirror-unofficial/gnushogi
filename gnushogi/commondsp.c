@@ -1971,7 +1971,7 @@ InputCommand(char *command)
         }
         else
         {
-            if (strcmp(s, "usermove") == 0)
+            if (strcmp(s, "usermove") == 0 && sx[8] == ' ')
                 sscanf(sx + 9, "%s", s);
 
             if (flag.mate)
