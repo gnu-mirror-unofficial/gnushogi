@@ -624,7 +624,7 @@ DisplayPattern (FILE *fd, short n)
 
 
 static void
-VisitReachable (int pside, short osequence, int k, int n, int remove)
+VisitReachable (int pside, short osequence, int k, int n, bool remove)
 {
     short i, j;
     short pattern;
@@ -676,7 +676,7 @@ locate_opening_sequence(short pside, char *s, short GameCnt)
 {
     short i, j, k, os, d;
     short l = strlen(s);
-    short check_visited[MAX_SEQUENCE];
+    bool check_visited[MAX_SEQUENCE];
     char name[MAX_NAME], name2[MAX_NAME];
 
     /*
