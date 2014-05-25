@@ -92,7 +92,7 @@ GenMakeMove(short side,
             short t,
             short *tempb,  /* piece at to square */
             short *tempc,  /* color of to square */
-            short promote_piece)
+            bool promote_piece)
 {
     short piece, upiece, n;
 
@@ -167,7 +167,7 @@ GenUnmakeMove(short side,
               short t,
               short tempb,
               short tempc,
-              short promote_piece)
+              bool promote_piece)
 {
     short piece, upiece, n;
 
@@ -234,8 +234,8 @@ GenUnmakeMove(short side,
 static void
 gives_check_flag(unsigned short *flags, short side, short f, short t)
 {
-    short tempb, tempc, promote_piece;
-    bool blockable;
+    short tempb, tempc;
+    bool blockable, promote_piece;
     promote_piece = (*flags & promote) != 0;
     GenMakeMove(side, f, t, &tempb, &tempc, promote_piece);
 
@@ -271,8 +271,8 @@ Link(short side,
         else if (InCheck)
         {
             /* only moves out of check */
-            short tempb, tempc, sq, threat, promote_piece;
-            bool blockable;
+            short tempb, tempc, sq, threat;
+            bool blockable, promote_piece;
             promote_piece = (node->flags & promote) != 0;
             GenMakeMove(side, node->f, node->t,
                         &tempb, &tempc, promote_piece);
