@@ -1549,7 +1549,7 @@ CaptureList(short side, short ply,
  * blockable < 0 && check: nothing known about type of check
  */
 
-short
+bool
 IsCheckmate(short side, short in_check, bool blockable)
 {
     short u, sq, xside;

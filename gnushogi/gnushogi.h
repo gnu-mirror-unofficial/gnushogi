@@ -1102,7 +1102,7 @@ extern short repetition(void);
 extern void  TimeCalc(void);
 extern void  ElapsedTime(ElapsedTime_mode iop);
 
-extern short
+extern bool
 IsCheckmate(short side, short in_check,
             bool blockable); /* genmoves.c */
 
