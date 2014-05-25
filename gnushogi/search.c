@@ -32,7 +32,7 @@
 
 #include "gnushogi.h"
 
-short background = 0;
+bool background = 0;
 static short DepthBeyond;
 unsigned short PrVar[MAXDEPTH];
 extern short recycle, ISZERO;
@@ -90,7 +90,7 @@ int plyscore, globalscore;
  * move into the p1 element.
  */
 
-int
+bool
 pick(short p1, short p2)
 {
     struct leaf  *p, *q, *r, *k;

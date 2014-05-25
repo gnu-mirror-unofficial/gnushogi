@@ -854,7 +854,7 @@ extern hashcode_array  *hashcode;
 extern drop_hashcode_array  *drop_hashcode;
 
 #ifdef QUIETBACKGROUND
-extern short background;
+extern bool background;
 #endif /* QUIETBACKGROUND */
 
 #if ttblsz
@@ -941,12 +941,12 @@ search(short side,
 
 #ifdef CACHE
 void PutInEETable(short side, int score);
-int  CheckEETable(short side);
-int  ProbeEETable(short side, short *score);
+bool CheckEETable(short side);
+bool ProbeEETable(short side, short *score);
 #endif
 
 #if ttblsz
-extern int
+extern bool
 ProbeTTable(short side,
             short depth,
             short ply,
@@ -954,7 +954,7 @@ ProbeTTable(short side,
             short *beta,
             short *score);
 
-extern int
+extern bool
 PutInTTable(short side,
             short score,
             short depth,
@@ -970,7 +970,7 @@ extern unsigned int urand(void);
 #  ifdef HASHFILE
 extern void gsrand(unsigned int);
 
-extern int
+extern bool
 ProbeFTable(short side,
             short depth,
             short ply,
@@ -1097,7 +1097,7 @@ extern void  skipb(void);
 extern void  EnPassant(short xside, short f, short t, short iop);
 extern void  ShowNodeCnt(long NodeCnt);
 extern void  ShowLine(unsigned short *bstline);
-extern int   pick(short p1, short p2);
+extern bool  pick(short p1, short p2);
 extern short repetition(void);
 extern void  TimeCalc(void);
 extern void  ElapsedTime(ElapsedTime_mode iop);

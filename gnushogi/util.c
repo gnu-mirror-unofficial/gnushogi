@@ -136,7 +136,7 @@ CB(short sq)
  * Look for the current board position in the transposition table.
  */
 
-int
+bool
 ProbeTTable (short side,
              short depth,
              short ply,
@@ -222,7 +222,7 @@ ProbeTTable (short side,
  * Store the current board position in the transposition table.
  */
 
-int
+bool
 PutInTTable(short side,
             short score,
             short depth,
@@ -324,7 +324,7 @@ Fbdcmp(unsigned char *a, unsigned char *b)
  * Look for the current board position in the persistent transposition table.
  */
 
-int
+bool
 ProbeFTable(short side,
             short depth,
             short ply,
@@ -521,7 +521,7 @@ PutInEETable(short side, int score)
 
 /* Get an evaluation from the transposition table */
 
-int
+bool
 CheckEETable(short side)
 {
     struct etable  *ptbl;
@@ -538,7 +538,7 @@ CheckEETable(short side)
 
 /* Get an evaluation from the transposition table */
 
-int
+bool
 ProbeEETable(short side, short *score)
 {
     struct etable  *ptbl;
