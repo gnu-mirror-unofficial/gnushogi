@@ -44,7 +44,7 @@ static bool check_determined = false;
 static bool deepsearchcut = true;
 static bool tas = false, taxs = false;
 
-short generate_move_flags = false;
+bool generate_move_flags = false;
 
 
 /*

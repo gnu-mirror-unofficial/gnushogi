@@ -994,7 +994,7 @@ PutInFTable(short side,
 extern void Initialize_moves(void);
 #endif
 
-extern short generate_move_flags;
+extern bool generate_move_flags;
 
 extern void MoveList(short side, short ply,
                      short in_check, bool blockable);
@@ -1111,7 +1111,7 @@ typedef enum
     VERIFY_AND_MAKE_MODE, VERIFY_AND_TRY_MODE, UNMAKE_MODE
 } VerifyMove_mode;
 
-extern int VerifyMove(char *s, VerifyMove_mode iop, unsigned short *mv);
+extern bool VerifyMove(char *s, VerifyMove_mode iop, unsigned short *mv);
 extern unsigned short TTage;
 
 /* display driver framework */

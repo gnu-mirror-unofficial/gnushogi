@@ -237,7 +237,7 @@ algbr(short f, short t, short flags)
  * opponent. If a match is found, make the move on the board.
  */
 
-int
+bool
 VerifyMove(char *s, VerifyMove_mode iop, unsigned short *mv)
 {
     static short pnt, tempb, tempc, tempsf, tempst, cnt;
