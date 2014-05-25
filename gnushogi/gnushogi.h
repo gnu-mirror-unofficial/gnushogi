@@ -571,7 +571,7 @@ struct etable
 };
 
 #if defined CACHE
-extern short use_etable;
+extern bool use_etable;
 typedef struct etable etable_field[ETABLE];
 extern etable_field  *etab[2];
 #endif
@@ -672,7 +672,7 @@ extern short debug_moves;
 
 
 #ifdef HISTORY
-extern short use_history;
+extern bool use_history;
 extern unsigned short  *history;
 #endif
 
@@ -688,7 +688,7 @@ extern struct leaf  *root;
 extern char savefile[], listfile[];
 extern short TrPnt[];
 extern small_short board[], color[];
-extern const small_short sweep[NO_PIECES];
+extern const bool sweep[NO_PIECES];
 extern small_short PieceList[2][NO_SQUARES], PawnCnt[2][NO_COLS];
 extern small_short Captured[2][NO_PIECES];
 
@@ -753,7 +753,7 @@ extern short stage, stage2;
 #define in_middlegame_stage (!flag.tsume && (stage >= 33) && (stage <= 66))
 #define in_endgame_stage    (flag.tsume || (stage > 66))
 
-extern short ahead, hash;
+extern bool ahead, hash;
 extern short balance[2];
 extern bool ChkFlag[], CptrFlag[], TesujiFlag[];
 extern short Pscore[], Tscore[];
@@ -776,7 +776,7 @@ extern const small_short relative_value[];
 extern const long control[];
 extern small_short diagonal(short delta);
 extern const small_short promoted[NO_PIECES], unpromoted[NO_PIECES];
-extern const small_short is_promoted[NO_PIECES];
+extern const bool is_promoted[NO_PIECES];
 
 typedef unsigned char next_array[NO_SQUARES][NO_SQUARES];
 typedef small_short distdata_array[NO_SQUARES][NO_SQUARES];
@@ -794,7 +794,7 @@ extern short first_direction(short ptyp, short *d, short sq);
 extern short next_direction(short ptyp, short *d, short sq);
 extern short next_position(short ptyp, short *d, short sq, short u);
 #else
-extern short use_nextpos;
+extern bool use_nextpos;
 extern next_array  *nextpos[NO_PTYPE_PIECES];
 extern next_array  *nextdir[NO_PTYPE_PIECES];
 #endif
@@ -803,12 +803,12 @@ extern value_array   *value;
 extern fscore_array  *fscore;
 
 #ifndef SAVE_DISTDATA
-extern short use_distdata;
+extern bool use_distdata;
 extern distdata_array  *distdata;
 #endif
 
 #ifndef SAVE_PTYPE_DISTDATA
-extern short use_ptype_distdata;
+extern bool use_ptype_distdata;
 extern distdata_array  *ptype_distdata[NO_PTYPE_PIECES];
 #endif
 
@@ -858,7 +858,7 @@ extern short background;
 #endif /* QUIETBACKGROUND */
 
 #if ttblsz
-extern short use_ttable;
+extern bool use_ttable;
 extern struct hashentry  *ttable[2];
 #endif
 
