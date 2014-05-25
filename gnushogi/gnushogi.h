@@ -1032,7 +1032,7 @@ evaluate(short side,
          short alpha,
          short beta,
          short INCscore,
-         short *InChk,
+         bool *InChk,
          bool *blockable);
 
 extern short ScorePosition(short side);

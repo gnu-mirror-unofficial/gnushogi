@@ -522,8 +522,8 @@ search(short side,
 {
     short j, pnt;
     short tempb, tempc, tempsf, tempst;
-    short xside, pbst, score, rcnt, in_check;
-    bool blockable;
+    short xside, pbst, score, rcnt;
+    bool blockable, in_check;
     unsigned short mv, nxtline[MAXDEPTH];
     struct leaf  *node, tmp;
     short best = -(SCORE_LIMIT + 3000);
