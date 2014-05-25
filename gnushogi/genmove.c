@@ -311,7 +311,7 @@ Link(short side,
 }
 
 
-inline int
+inline bool
 PromotionPossible(short color, short f, short t, short p)
 {
     if (color == black)
@@ -1495,7 +1495,7 @@ CaptureList(short side, short ply,
             {
                 if (color[u] == xside && board[u] != king)
                 {
-                    short PP;
+                    bool PP;
 
                     if ((PP = PromotionPossible(color[sq], sq, u, piece)))
                     {
