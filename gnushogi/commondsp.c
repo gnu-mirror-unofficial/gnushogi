@@ -1502,7 +1502,7 @@ InputCommand(char *command)
 #ifdef QUIETBACKGROUND
     bool have_shown_prompt = false;
 #endif
-    short ok, done, is_move = false;
+    bool ok, done, is_move = false;
     unsigned short mv;
     char s[80], sx[80];
 

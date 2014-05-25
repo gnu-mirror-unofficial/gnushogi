@@ -121,7 +121,7 @@ pick(short p1, short p2)
     return false;
 }
 
-int bookflag = false;
+bool bookflag = false;
 int Jscore = 0;
 
 int TCcount;

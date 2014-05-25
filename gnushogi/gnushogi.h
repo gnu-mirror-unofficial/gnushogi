@@ -635,30 +635,30 @@ struct TimeControlRec
 
 struct flags
 {
-    short mate;              /* the game is over */
-    short post;              /* show principle variation */
-    short quit;              /* quit/exit */
-    short regularstart;      /* did the game start from standard
+    bool mate;              /* the game is over */
+    bool post;              /* show principle variation */
+    bool quit;              /* quit/exit */
+    bool regularstart;      /* did the game start from standard
                               * initial board ? */
-    short reverse;           /* reverse board display */
-    short bothsides;         /* computer plays both sides */
-    short hash;              /* enable/disable transposition table */
-    short force;             /* enter moves */
-    short easy;              /* disable thinking on opponents time */
-    short beep;              /* enable/disable beep */
-    short timeout;           /* time to make a move */
-    short musttimeout;       /* time to make a move */
-    short back;              /* time to make a move */
-    short rcptr;             /* enable/disable recapture heuristics */
-    short rv;                /* reverse video */
-    short stars;             /* add stars to uxdsp screen */
-    short coords;            /* add coords to visual screen */
-    short shade;
-    short material;          /* draw on lack of material */
-    short illegal;           /* illegal position */
-    short onemove;           /* timing is onemove */
-    short gamein;            /* timing is gamein */
-    short tsume;             /* first consider checks */
+    bool reverse;           /* reverse board display */
+    bool bothsides;         /* computer plays both sides */
+    bool hash;              /* enable/disable transposition table */
+    bool force;             /* enter moves */
+    bool easy;              /* disable thinking on opponents time */
+    bool beep;              /* enable/disable beep */
+    bool timeout;           /* time to make a move */
+    bool musttimeout;       /* time to make a move */
+    bool back;              /* time to make a move */
+    bool rcptr;             /* enable/disable recapture heuristics */
+    bool rv;                /* reverse video */
+    bool stars;             /* add stars to uxdsp screen */
+    bool coords;            /* add coords to visual screen */
+    bool shade;
+    bool material;          /* draw on lack of material */
+    bool illegal;           /* illegal position */
+    bool onemove;           /* timing is onemove */
+    bool gamein;            /* timing is gamein */
+    bool tsume;             /* first consider checks */
 };
 
 extern FILE *debugfile;
