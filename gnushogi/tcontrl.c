@@ -34,8 +34,6 @@
 #include "gnushogi.h"
 #include <math.h>
 
-#define ALTERNATIVE_TC
-
 
 /*
  * In a networked enviroment gnushogi might be compiled on different hosts
@@ -135,7 +133,6 @@ TimeCalc()
 
 void SetResponseTime(short side)
 {
-#ifdef ALTERNATIVE_TC
     int DetermineTCcount = true;
 
     if (TCflag)
@@ -233,68 +230,6 @@ void SetResponseTime(short side)
 
     if (ResponseTime < MINRESPONSETIME)
         ResponseTime = MINRESPONSETIME;
-
-#else
-
-    if (TCflag)
-    {
-        TCcount = 0;
-
-        if (TimeControl.moves[side] < 1)
-            TimeControl.moves[side] = 1;
-
-        /* special case time per move specified */
-        if (flag.onemove)
-        {
-            ResponseTime = TimeControl.clock[side] - 100;
-            TCleft = 0;
-        }
-        else
-        {
-            /* calculate avg time per move remaining */
-            TimeControl.clock[side] += TCadd;
-
-            ResponseTime = (TimeControl.clock[side])
-                / (((TimeControl.moves[side]) * 2) + 1);
-            TCleft = (int) ResponseTime / 3;
-            ResponseTime += TCadd / 2;
-
-            if (TimeControl.moves[side] < 5)
-                TCcount = MAXTCCOUNTX - 10;
-        }
-
-        if (ResponseTime < 101)
-        {
-            ResponseTime = 100;
-            TCcount = MAXTCCOUNTX - 10;
-        }
-        else if (ResponseTime < 200)
-        {
-            TCcount = MAXTCCOUNTX - 10;
-        }
-    }
-    else
-    {
-        ResponseTime = MaxResponseTime;
-        TCleft = 0;
-        ElapsedTime(COMPUTE_AND_INIT_MODE);
-    }
-
-    if (TCleft)
-    {
-        TCcount = ((int)((TimeControl.clock[side] - ResponseTime)) / 2)
-            / TCleft;
-
-        if (TCcount > MAXTCCOUNTX)
-            TCcount = 0;
-        else
-            TCcount = MAXTCCOUNTX - TCcount;
-    }
-    else
-    {
-        TCcount = MAXTCCOUNTX;
-    }
-#endif
 
     assert(TCcount <= MAXTCCOUNTX);
 }
