@@ -98,8 +98,7 @@ PATTERNFILE=$(ROOT)/misc/$(PROGNAME).pat
 PATTERN    = -DPATTERNFILE=\"$(PATTERNFILE)\"
 
 
-all:
-	@echo No target specified.
+all: $(PROGNAME) pat2inc $(PROGNAME).bbk
 
 
 #
