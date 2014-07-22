@@ -39,6 +39,8 @@ Minishogi-related stuff
 
 Improvements
 
+- add a test suite; get inspiration from gnuchess (gps-shogi does not
+  seem to have much, unfortunately)
 - find out why the engine is so weak
   - make it battle against Mutz-era gnushogi, and other engines, and
     compare their evaluation results
