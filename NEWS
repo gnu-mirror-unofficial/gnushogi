@@ -16,6 +16,7 @@ Changes in version 1.4.3 (unreleased):
 
 * Fixed a bug with forced promotion of pawns in minishogi.
 * Fix support for parallel build.
+* Minor code cleanups.
 
 Changes in version 1.4.2 (02/2014):
 
