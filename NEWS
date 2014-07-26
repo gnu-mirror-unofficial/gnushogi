@@ -3,8 +3,10 @@ GNU shogi news
 
 Changes in version 1.4.3 (unreleased):
 
+* Fixed frequent forfeit in the last move caused by wrong evaluation
+  of remaining time.
 * Fixed a bug with forced promotion of pawns in minishogi.
-* Fix support for parallel build.
+* Fixed support for parallel build.
 * Minor code cleanups.
 
 Changes in version 1.4.2 (02/2014):
