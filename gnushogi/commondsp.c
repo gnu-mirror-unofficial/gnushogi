@@ -1650,6 +1650,10 @@ InputCommand(char *command)
         }
         else if (strcmp(s, "protover") == 0)
         {
+            printf("feature option=\"tsume -check 0\"\n");
+            printf("feature option=\"contempt -spin %d -1000 1000\"\n", contempt);
+            printf("feature option=\"Hash-file search depth -spin %d 0 100\"\n", HashDepth);
+            printf("feature option=\"Hash-file move number -spin %d 0 100\"\n", HashMoveLimit);
             printf("feature myname=\"GNU %s %s\" ",
 #ifdef MINISHOGI
                    "MiniShogi",
@@ -1888,6 +1892,22 @@ InputCommand(char *command)
         else if (strcmp(s, "easy") == 0)
         {
             flag.easy = !flag.easy;
+        }
+        else if (strcmp(s, "option") == 0)
+        {
+            do {
+                if (sscanf(sx, "option tsume=%hd", &flag.tsume) == 1)
+                    break;
+                if (sscanf(sx, "option hash=%hd",  &flag.hash) == 1)
+                    break;
+                if (sscanf(sx, "option Hash-file search depth=%hd", &HashDepth) == 1)
+                    break;
+                if (sscanf(sx, "option Hash-file move number=%hd", &HashMoveLimit) == 1)
+                    break;
+                if (sscanf(sx, "option contempt=%hd", &contempt) == 1)
+                    break;
+                dsp->AlwaysShowMessage("Unknown '%s'", sx);
+            } while(0);
         }
         else if (strcmp(s, "tsume") == 0)
         {
