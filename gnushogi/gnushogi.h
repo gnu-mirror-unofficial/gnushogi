@@ -675,7 +675,7 @@ extern unsigned short  *history;
 
 extern long znodes;
 
-extern char ColorStr[2][10];
+extern const char* ColorStr[2];
 
 extern char mvstr[4][6];
 extern int mycnt1, mycnt2;

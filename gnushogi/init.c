@@ -659,9 +659,6 @@ InitMain(void)
     if (Initialize_data() != 0)
         return 1;
 
-    strcpy(ColorStr[0], "Black");
-    strcpy(ColorStr[1], "White");
-
     XC = 0;
     MaxResponseTime = 0;
 

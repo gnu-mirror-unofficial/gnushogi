@@ -1644,9 +1644,13 @@ InputCommand(char *command)
         }
         else if (strcmp(s, "xboard") == 0)
         {
-            xboard = true;
-            strcpy(ColorStr[0], "White");
-            strcpy(ColorStr[1], "Black");
+            if (!xboard) {
+                /* xboard calls Sente "White" */
+                const char *tmp = ColorStr[0];
+                ColorStr[0] = ColorStr[1];
+                ColorStr[1] = tmp;
+                xboard = true;
+            }
         }
         else if (strcmp(s, "protover") == 0)
         {

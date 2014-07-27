@@ -47,7 +47,7 @@ small_short Pindex[NO_SQUARES];
 short mtl[2], hung[2];
 small_short PieceCnt[2];
 
-char ColorStr[2][10];
+const char* ColorStr[2] = {"Black", "White"};
 
 long znodes;
 
