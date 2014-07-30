@@ -1901,10 +1901,15 @@ InputCommand(char *command)
         else if (strcmp(s, "option") == 0)
         {
             do {
-                if (sscanf(sx, "option tsume=%hd", &flag.tsume) == 1)
+                int value;
+                if (sscanf(sx, "option tsume=%d", &value) == 1) {
+                    flag.tsume = (value != 0);
                     break;
-                if (sscanf(sx, "option hash=%hd",  &flag.hash) == 1)
+                }
+                if (sscanf(sx, "option hash=%d", &value) == 1) {
+                    flag.hash = (value != 0);
                     break;
+                }
                 if (sscanf(sx, "option Hash-file search depth=%hd", &HashDepth) == 1)
                     break;
                 if (sscanf(sx, "option Hash-file move number=%hd", &HashMoveLimit) == 1)
