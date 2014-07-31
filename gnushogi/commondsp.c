@@ -1655,6 +1655,7 @@ InputCommand(char *command)
         else if (strcmp(s, "protover") == 0)
         {
             printf("feature option=\"tsume -check 0\"\n");
+            printf("feature option=\"Use hash-file -check %d\"\n", !!flag.hash);
             printf("feature option=\"contempt -spin %d -1000 1000\"\n", contempt);
             printf("feature option=\"Hash-file search depth -spin %d 0 100\"\n", HashDepth);
             printf("feature option=\"Hash-file move number -spin %d 0 100\"\n", HashMoveLimit);
@@ -1902,7 +1903,7 @@ InputCommand(char *command)
             do {
                 if (sscanf(sx, "option tsume=%hd", &flag.tsume) == 1)
                     break;
-                if (sscanf(sx, "option hash=%hd",  &flag.hash) == 1)
+                if (sscanf(sx, "option Use hash-file=%hd", &flag.hash) == 1)
                     break;
                 if (sscanf(sx, "option Hash-file search depth=%hd", &HashDepth) == 1)
                     break;
