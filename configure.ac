@@ -73,6 +73,7 @@ AC_CHECK_HEADERS([fcntl.h stdlib.h string.h sys/file.h sys/ioctl.h])
 AC_CHECK_HEADERS([sys/param.h sys/time.h unistd.h])
 AC_CHECK_HEADERS(errno.h)
 AC_HEADER_TIME
+AC_HEADER_STDBOOL
 
 ##########
 AC_MSG_NOTICE([typedefs])

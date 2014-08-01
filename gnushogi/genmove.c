@@ -38,13 +38,13 @@ static short *TrP;
 
 static struct leaf  *node;
 static short sqking, sqxking;
-static short InCheck = false, GenerateAllMoves = false;
-static short check_determined = false;
+static bool InCheck = false, GenerateAllMoves = false;
+static bool check_determined = false;
 
-short deepsearchcut = true;
-short tas = false, taxs = false, ssa = false;
+static bool deepsearchcut = true;
+static bool tas = false, taxs = false;
 
-short generate_move_flags = false;
+bool generate_move_flags = false;
 
 
 /*
@@ -92,7 +92,7 @@ GenMakeMove(short side,
             short t,
             short *tempb,  /* piece at to square */
             short *tempc,  /* color of to square */
-            short promote_piece)
+            bool promote_piece)
 {
     short piece, upiece, n;
 
@@ -167,7 +167,7 @@ GenUnmakeMove(short side,
               short t,
               short tempb,
               short tempc,
-              short promote_piece)
+              bool promote_piece)
 {
     short piece, upiece, n;
 
@@ -234,7 +234,8 @@ GenUnmakeMove(short side,
 static void
 gives_check_flag(unsigned short *flags, short side, short f, short t)
 {
-    short tempb, tempc, blockable, promote_piece;
+    short tempb, tempc;
+    bool blockable, promote_piece;
     promote_piece = (*flags & promote) != 0;
     GenMakeMove(side, f, t, &tempb, &tempc, promote_piece);
 
@@ -270,7 +271,8 @@ Link(short side,
         else if (InCheck)
         {
             /* only moves out of check */
-            short tempb, tempc, sq, threat, blockable, promote_piece;
+            short tempb, tempc, sq, threat;
+            bool blockable, promote_piece;
             promote_piece = (node->flags & promote) != 0;
             GenMakeMove(side, node->f, node->t,
                         &tempb, &tempc, promote_piece);
@@ -309,7 +311,7 @@ Link(short side,
 }
 
 
-inline int
+inline bool
 PromotionPossible(short color, short f, short t, short p)
 {
     if (color == black)
@@ -589,7 +591,7 @@ LinkMove(short ply, short f,
 {
     short s = 0;
     short side, piece, mv;
-    short flag_tsume, try_link = true;
+    bool flag_tsume, try_link = true;
     short c1, c2, ds, is_drop = f > NO_SQUARES;
     unsigned long as = 0;
 
@@ -739,7 +741,7 @@ LinkMove(short ply, short f,
     else
     {
         /* bonus for moves (non-drops) */
-        int consider_last = false;
+        bool consider_last = false;
 
         if (in_endgame_stage && Captured[side][gold])
             s += 10;
@@ -1287,7 +1289,7 @@ LinkCheckDrops(short side, short xside, short ply)
 
 void
 MoveList(short side, short ply,
-         short in_check, short blockable)
+         short in_check, bool blockable)
 {
     short i, xside, u;
     struct leaf  *firstnode;
@@ -1421,7 +1423,7 @@ MoveList(short side, short ply,
 
 void
 CaptureList(short side, short ply,
-            short in_check, short blockable)
+            short in_check, bool blockable)
 {
     short u, sq, xside;
 #ifdef SAVE_NEXTPOS
@@ -1493,7 +1495,7 @@ CaptureList(short side, short ply,
             {
                 if (color[u] == xside && board[u] != king)
                 {
-                    short PP;
+                    bool PP;
 
                     if ((PP = PromotionPossible(color[sq], sq, u, piece)))
                     {
@@ -1547,8 +1549,8 @@ CaptureList(short side, short ply,
  * blockable < 0 && check: nothing known about type of check
  */
 
-short
-IsCheckmate(short side, short in_check, short blockable)
+bool
+IsCheckmate(short side, short in_check, bool blockable)
 {
     short u, sq, xside;
 #ifdef SAVE_NEXTPOS
@@ -1558,7 +1560,8 @@ IsCheckmate(short side, short in_check, short blockable)
 #endif
     short i, piece;
     small_short *PL;
-    short tempb, tempc, ksq, threat, dummy, sqking;
+    short tempb, tempc, ksq, threat, sqking;
+    bool dummy;
     short InCheck;
 
     xside = side ^ 1;

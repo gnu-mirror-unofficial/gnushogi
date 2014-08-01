@@ -33,14 +33,14 @@
 #include "gnushogi.h"
 
 
-short ahead = true, hash = true;
+bool ahead = true, hash = true; /* default values for CLI flags -a and -h */
 char  *xwin = 0;
 char  *Lang = NULL;
 
 
 short FROMsquare, TOsquare;
 
-small_short ChkFlag[MAXDEPTH], CptrFlag[MAXDEPTH], TesujiFlag[MAXDEPTH];
+bool ChkFlag[MAXDEPTH], CptrFlag[MAXDEPTH], TesujiFlag[MAXDEPTH]; /* FIXME: turn into bitfields ? */
 short Pscore[MAXDEPTH], Tscore[MAXDEPTH];
 small_short Pindex[NO_SQUARES];
 
@@ -95,10 +95,11 @@ short rehash = -1;
 short Sdepth, Game50, MaxSearchDepth;
 short GameCnt = 0;
 short contempt;
-int   Book;
+bool  Book;
 struct TimeControlRec TimeControl;
 int   TCadd = 0;
-short TCflag, TCmoves, TCminutes, TCseconds, OperatorTime;
+short TCmoves, TCminutes, TCseconds, OperatorTime;
+bool TCflag;
 short XCmoves[3]   = { 0, 0, 0 };
 short XCminutes[3] = { 0, 0, 0 };
 short XCseconds[3] = { 0, 0, 0 };
@@ -166,33 +167,33 @@ value_array   *value  = NULL;
 fscore_array  *fscore = NULL;
 
 #ifndef SAVE_DISTDATA
-short use_distdata = true;
+bool use_distdata = true;
 distdata_array  *distdata = NULL;
 #endif
 
 #ifndef SAVE_PTYPE_DISTDATA
-short use_ptype_distdata = true;
+bool use_ptype_distdata = true;
 distdata_array  *ptype_distdata[NO_PTYPE_PIECES];
 #endif
 
 #if !defined SAVE_NEXTPOS
 next_array  *nextdir[NO_PTYPE_PIECES];
 next_array  *nextpos[NO_PTYPE_PIECES];
-short use_nextpos = true;
+bool use_nextpos = true;
 #endif
 
 #if defined HISTORY
-short use_history = true;
+bool use_history = true;
 unsigned short  *history = NULL;
 #endif
 
 #ifdef CACHE
-short use_etable = true;
+bool use_etable = true;
 etable_field  *etab[2] = { NULL, NULL };
 #endif
 
 #if ttblsz
-short use_ttable = true;
+bool use_ttable = true;
 unsigned int ttblsize = ttblsz;
 struct hashentry  *ttable[2] = { NULL, NULL };
 #endif

@@ -66,7 +66,7 @@ display_t display_type = DISPLAY_X;
 /* .... MOVE GENERATION VARIABLES AND INITIALIZATIONS .... */
 
 #ifdef SAVE_NEXTPOS
-const small_short psweep[NO_PTYPE_PIECES] =
+static const bool psweep[NO_PTYPE_PIECES] =
 {
     false,
 #ifndef MINISHOGI
@@ -81,7 +81,7 @@ const small_short psweep[NO_PTYPE_PIECES] =
 };
 #endif
 
-const small_short sweep[NO_PIECES] =
+const bool sweep[NO_PIECES] =
 {
     false, false,
 #ifndef MINISHOGI
@@ -164,7 +164,7 @@ Initialize_dist(void)
  */
 
 
-const small_short is_promoted[NO_PIECES] =
+const bool is_promoted[NO_PIECES] =
 {
     false, false,
 #ifndef MINISHOGI
@@ -296,7 +296,7 @@ const small_short inunmap[NO_SQUARES] =
 };
 #endif
 
-int InitFlag = false;
+static bool InitFlag = false;
 
 
 #if defined SAVE_NEXTPOS

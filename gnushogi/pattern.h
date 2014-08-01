@@ -58,7 +58,7 @@ struct PatternField
 
 struct Pattern_rec
 {
-    small_short visited;
+    bool visited;
     small_short distance[2];
     short reachedGameCnt[2];
     short first_link;

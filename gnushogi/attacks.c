@@ -40,8 +40,8 @@
  * *blockable == attack could be blocked by drop
  */
 
-int
-SqAttacked(short square, short side, short *blockable)
+bool
+SqAttacked(short square, short side, bool *blockable)
 {
 #ifdef SAVE_NEXTPOS
     short d;

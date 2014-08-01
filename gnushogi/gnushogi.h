@@ -46,6 +46,18 @@
 
 #include <stdarg.h>
 
+#ifdef HAVE_STDBOOL_H
+# include <stdbool.h>
+#else
+# ifndef HAVE__BOOL
+#  define _Bool signed char
+# endif
+# define bool _Bool
+# define false 0
+# define true 1
+# define __bool_true_false_are_defined 1
+#endif
+
 /*
  * Display options.
  */
@@ -66,7 +78,7 @@ extern display_t display_type;
 
 extern short hard_time_limit; /* If you exceed time limit, you lose.   */
 extern short nolist;          /* Don't list game after exit.           */
-extern short xboard;          /* Use XBoard instead of xShogi protocol */
+extern bool  xboard;          /* Use XBoard instead of xShogi protocol */
 
 
 /*
@@ -241,15 +253,6 @@ extern void movealgbr(short m, char *s);
 /* constants */
 /* FIXME ? */
 #define OPENING_HINT 0x141d /* P7g-7f (20->29) */
-
-/* truth values */
-#ifndef false
-#define false 0
-#endif
-
-#ifndef true
-#define true  1
-#endif
 
 /* colors */
 #define black   0
@@ -568,7 +571,7 @@ struct etable
 };
 
 #if defined CACHE
-extern short use_etable;
+extern bool use_etable;
 typedef struct etable etable_field[ETABLE];
 extern etable_field  *etab[2];
 #endif
@@ -632,30 +635,30 @@ struct TimeControlRec
 
 struct flags
 {
-    short mate;              /* the game is over */
-    short post;              /* show principle variation */
-    short quit;              /* quit/exit */
-    short regularstart;      /* did the game start from standard
+    bool mate;              /* the game is over */
+    bool post;              /* show principle variation */
+    bool quit;              /* quit/exit */
+    bool regularstart;      /* did the game start from standard
                               * initial board ? */
-    short reverse;           /* reverse board display */
-    short bothsides;         /* computer plays both sides */
-    short hash;              /* enable/disable transposition table */
-    short force;             /* enter moves */
-    short easy;              /* disable thinking on opponents time */
-    short beep;              /* enable/disable beep */
-    short timeout;           /* time to make a move */
-    short musttimeout;       /* time to make a move */
-    short back;              /* time to make a move */
-    short rcptr;             /* enable/disable recapture heuristics */
-    short rv;                /* reverse video */
-    short stars;             /* add stars to uxdsp screen */
-    short coords;            /* add coords to visual screen */
-    short shade;
-    short material;          /* draw on lack of material */
-    short illegal;           /* illegal position */
-    short onemove;           /* timing is onemove */
-    short gamein;            /* timing is gamein */
-    short tsume;             /* first consider checks */
+    bool reverse;           /* reverse board display */
+    bool bothsides;         /* computer plays both sides */
+    bool hash;              /* enable/disable transposition table */
+    bool force;             /* enter moves */
+    bool easy;              /* disable thinking on opponents time */
+    bool beep;              /* enable/disable beep */
+    bool timeout;           /* time to make a move */
+    bool musttimeout;       /* time to make a move */
+    bool back;              /* time to make a move */
+    bool rcptr;             /* enable/disable recapture heuristics */
+    bool rv;                /* reverse video */
+    bool stars;             /* add stars to uxdsp screen */
+    bool coords;            /* add coords to visual screen */
+    bool shade;
+    bool material;          /* draw on lack of material */
+    bool illegal;           /* illegal position */
+    bool onemove;           /* timing is onemove */
+    bool gamein;            /* timing is gamein */
+    bool tsume;             /* first consider checks */
 };
 
 extern FILE *debugfile;
@@ -669,7 +672,7 @@ extern short debug_moves;
 
 
 #ifdef HISTORY
-extern short use_history;
+extern bool use_history;
 extern unsigned short  *history;
 #endif
 
@@ -685,7 +688,7 @@ extern struct leaf  *root;
 extern char savefile[], listfile[];
 extern short TrPnt[];
 extern small_short board[], color[];
-extern const small_short sweep[NO_PIECES];
+extern const bool sweep[NO_PIECES];
 extern small_short PieceList[2][NO_SQUARES], PawnCnt[2][NO_COLS];
 extern small_short Captured[2][NO_PIECES];
 
@@ -731,10 +734,11 @@ extern short HashDepth, HashMoveLimit;
 extern struct GameRec  *GameList;
 extern short GameCnt, Game50;
 extern short Sdepth, MaxSearchDepth;
-extern int   Book;
+extern bool  Book;
 extern struct TimeControlRec TimeControl;
 extern int   TCadd;
-extern short TCflag, TCmoves, TCminutes, TCseconds, OperatorTime;
+extern short TCmoves, TCminutes, TCseconds, OperatorTime;
+extern bool  TCflag;
 extern int   timecomp[MINGAMEIN], timeopp[MINGAMEIN];
 extern int   compptr, oppptr;
 extern short XCmore, XCmoves[], XCminutes[], XCseconds[], XC;
@@ -749,9 +753,9 @@ extern short stage, stage2;
 #define in_middlegame_stage (!flag.tsume && (stage >= 33) && (stage <= 66))
 #define in_endgame_stage    (flag.tsume || (stage > 66))
 
-extern short ahead, hash;
+extern bool ahead, hash;
 extern short balance[2];
-extern small_short ChkFlag[], CptrFlag[], TesujiFlag[];
+extern bool ChkFlag[], CptrFlag[], TesujiFlag[];
 extern short Pscore[], Tscore[];
 extern /*unsigned*/ short rehash;  /* -1 is used as a flag --tpm */
 extern unsigned int ttbllimit;
@@ -772,7 +776,7 @@ extern const small_short relative_value[];
 extern const long control[];
 extern small_short diagonal(short delta);
 extern const small_short promoted[NO_PIECES], unpromoted[NO_PIECES];
-extern const small_short is_promoted[NO_PIECES];
+extern const bool is_promoted[NO_PIECES];
 
 typedef unsigned char next_array[NO_SQUARES][NO_SQUARES];
 typedef small_short distdata_array[NO_SQUARES][NO_SQUARES];
@@ -790,7 +794,7 @@ extern short first_direction(short ptyp, short *d, short sq);
 extern short next_direction(short ptyp, short *d, short sq);
 extern short next_position(short ptyp, short *d, short sq, short u);
 #else
-extern short use_nextpos;
+extern bool use_nextpos;
 extern next_array  *nextpos[NO_PTYPE_PIECES];
 extern next_array  *nextdir[NO_PTYPE_PIECES];
 #endif
@@ -799,12 +803,12 @@ extern value_array   *value;
 extern fscore_array  *fscore;
 
 #ifndef SAVE_DISTDATA
-extern short use_distdata;
+extern bool use_distdata;
 extern distdata_array  *distdata;
 #endif
 
 #ifndef SAVE_PTYPE_DISTDATA
-extern short use_ptype_distdata;
+extern bool use_ptype_distdata;
 extern distdata_array  *ptype_distdata[NO_PTYPE_PIECES];
 #endif
 
@@ -850,11 +854,11 @@ extern hashcode_array  *hashcode;
 extern drop_hashcode_array  *drop_hashcode;
 
 #ifdef QUIETBACKGROUND
-extern short background;
+extern bool background;
 #endif /* QUIETBACKGROUND */
 
 #if ttblsz
-extern short use_ttable;
+extern bool use_ttable;
 extern struct hashentry  *ttable[2];
 #endif
 
@@ -908,7 +912,7 @@ extern void Initialize_dist(void); /* init.c */
 extern void Initialize_eval(void); /* eval.c */
 extern void NewGame(void);
 extern void GetOpenings(void);
-extern int  OpeningBook(unsigned short *hint);
+extern bool OpeningBook(unsigned short *hint);
 
 typedef enum
 {
@@ -937,12 +941,12 @@ search(short side,
 
 #ifdef CACHE
 void PutInEETable(short side, int score);
-int  CheckEETable(short side);
-int  ProbeEETable(short side, short *score);
+bool CheckEETable(short side);
+bool ProbeEETable(short side, short *score);
 #endif
 
 #if ttblsz
-extern int
+extern bool
 ProbeTTable(short side,
             short depth,
             short ply,
@@ -950,7 +954,7 @@ ProbeTTable(short side,
             short *beta,
             short *score);
 
-extern int
+extern bool
 PutInTTable(short side,
             short score,
             short depth,
@@ -966,7 +970,7 @@ extern unsigned int urand(void);
 #  ifdef HASHFILE
 extern void gsrand(unsigned int);
 
-extern int
+extern bool
 ProbeFTable(short side,
             short depth,
             short ply,
@@ -991,16 +995,16 @@ PutInFTable(short side,
 extern void Initialize_moves(void);
 #endif
 
-extern short generate_move_flags;
+extern bool generate_move_flags;
 
 extern void MoveList(short side, short ply,
-                     short in_check, short blockable);
+                     short in_check, bool blockable);
 extern void CaptureList(short side, short ply,
-                        short in_check, short blockable);
+                        short in_check, bool blockable);
 
 /* from attacks.c */
-extern int
-SqAttacked(short square, short side, short *blockable);
+extern bool
+SqAttacked(short square, short side, bool *blockable);
 
 extern void
 MakeMove(short side,
@@ -1028,8 +1032,8 @@ evaluate(short side,
          short alpha,
          short beta,
          short INCscore,
-         short *InChk,
-         short *blockable);
+         bool *InChk,
+         bool *blockable);
 
 extern short ScorePosition(short side);
 extern void  ExaminePosition(short side);
@@ -1093,14 +1097,14 @@ extern void  skipb(void);
 extern void  EnPassant(short xside, short f, short t, short iop);
 extern void  ShowNodeCnt(long NodeCnt);
 extern void  ShowLine(unsigned short *bstline);
-extern int   pick(short p1, short p2);
+extern bool  pick(short p1, short p2);
 extern short repetition(void);
 extern void  TimeCalc(void);
 extern void  ElapsedTime(ElapsedTime_mode iop);
 
-extern short
+extern bool
 IsCheckmate(short side, short in_check,
-            short blockable); /* genmoves.c */
+            bool blockable); /* genmoves.c */
 
 
 typedef enum
@@ -1108,7 +1112,7 @@ typedef enum
     VERIFY_AND_MAKE_MODE, VERIFY_AND_TRY_MODE, UNMAKE_MODE
 } VerifyMove_mode;
 
-extern int VerifyMove(char *s, VerifyMove_mode iop, unsigned short *mv);
+extern bool VerifyMove(char *s, VerifyMove_mode iop, unsigned short *mv);
 extern unsigned short TTage;
 
 /* display driver framework */

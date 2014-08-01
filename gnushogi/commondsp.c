@@ -55,7 +55,7 @@ int mycnt1, mycnt2;
 static char *InPtr;
 struct display *dsp = &raw_display;
 
-short xboard = false;
+bool xboard = false;
 
 #if defined(BOOKTEST)
 
@@ -237,7 +237,7 @@ algbr(short f, short t, short flags)
  * opponent. If a match is found, make the move on the board.
  */
 
-int
+bool
 VerifyMove(char *s, VerifyMove_mode iop, unsigned short *mv)
 {
     static short pnt, tempb, tempc, tempsf, tempst, cnt;
@@ -305,7 +305,7 @@ VerifyMove(char *s, VerifyMove_mode iop, unsigned short *mv)
 
     if ((cnt == 1) && (xnode.score > DONTUSE))
     {
-        short blocked;
+        bool blocked;
 
         MakeMove(opponent, &xnode, &tempb, &tempc,
                  &tempsf, &tempst, &INCscore);
@@ -371,7 +371,8 @@ static int
 parser(char *f, short *fpiece)
 {
     int c1, r1, c2, r2;
-    short i, p = false;
+    short i;
+    bool p = false;
 
     if (*f == '+')
         f++, p = true;
@@ -1332,7 +1333,7 @@ Undo(void)
 
 static void
 TestSpeed(void(*f)(short side, short ply,
-                   short in_check, short blockable),
+                   short in_check, bool blockable),
           unsigned j)
 {
 #ifdef test
@@ -1499,9 +1500,9 @@ void
 InputCommand(char *command)
 {
 #ifdef QUIETBACKGROUND
-    short have_shown_prompt = false;
+    bool have_shown_prompt = false;
 #endif
-    short ok, done, is_move = false;
+    bool ok, done, is_move = false;
     unsigned short mv;
     char s[80], sx[80];
 
@@ -1655,7 +1656,7 @@ InputCommand(char *command)
         else if (strcmp(s, "protover") == 0)
         {
             printf("feature option=\"tsume -check 0\"\n");
-            printf("feature option=\"Use hash-file -check %d\"\n", !!flag.hash);
+            printf("feature option=\"Use hash-file -check %d\"\n", flag.hash);
             printf("feature option=\"contempt -spin %d -1000 1000\"\n", contempt);
             printf("feature option=\"Hash-file search depth -spin %d 0 100\"\n", HashDepth);
             printf("feature option=\"Hash-file move number -spin %d 0 100\"\n", HashMoveLimit);
@@ -1901,10 +1902,15 @@ InputCommand(char *command)
         else if (strcmp(s, "option") == 0)
         {
             do {
-                if (sscanf(sx, "option tsume=%hd", &flag.tsume) == 1)
+                int value;
+                if (sscanf(sx, "option tsume=%d", &value) == 1) {
+                    flag.tsume = (value != 0);
                     break;
-                if (sscanf(sx, "option Use hash-file=%hd", &flag.hash) == 1)
+                }
+                if (sscanf(sx, "option Use hash-file=%d", &value) == 1) {
+                    flag.hash = (value != 0);
                     break;
+                }
                 if (sscanf(sx, "option Hash-file search depth=%hd", &HashDepth) == 1)
                     break;
                 if (sscanf(sx, "option Hash-file move number=%hd", &HashMoveLimit) == 1)
