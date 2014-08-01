@@ -974,7 +974,7 @@ three-mover.  Here is a really trivial three-mover:
  |    | bN |    |  f
 ----------------+
 
-Black in hand: S, G
+Black in hand: 2G
 @end verbatim
 @end ifnottex
 

@@ -14,8 +14,11 @@ Changes in version 1.5.0 (unreleased):
 
 Changes in version 1.4.3 (unreleased):
 
+* Fixed frequent forfeit in the last move caused by wrong evaluation
+  of remaining time.
 * Fixed a bug with forced promotion of pawns in minishogi.
-* Fix support for parallel build.
+* Fixed the tsume problem in the manual (was only correct in TeX output).
+* Fixed support for parallel build.
 * Minor code cleanups.
 
 Changes in version 1.4.2 (02/2014):
