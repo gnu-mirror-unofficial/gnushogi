@@ -500,7 +500,7 @@ NewGame(void)
     flag.material = flag.coords = flag.hash = flag.easy
         = flag.beep = flag.rcptr
         = true;
-    flag.stars  = flag.shade = flag.back = flag.musttimeout = false;
+    flag.shade = flag.back = flag.musttimeout = false;
     flag.gamein = false;
     flag.rv     = true;
 

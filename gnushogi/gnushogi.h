@@ -651,7 +651,6 @@ struct flags
     bool back;              /* time to make a move */
     bool rcptr;             /* enable/disable recapture heuristics */
     bool rv;                /* reverse video */
-    bool stars;             /* add stars to uxdsp screen */
     bool coords;            /* add coords to visual screen */
     bool shade;
     bool material;          /* draw on lack of material */

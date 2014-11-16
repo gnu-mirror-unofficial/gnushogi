@@ -321,8 +321,7 @@ Raw_help(void)
     printf("contempt                          xwndw                  \n");
     printf("rv        turn %3s                coords    turn %s\n",
            flag.rv ? "OFF" : "ON ", flag.coords ? "OFF" : "ON");
-    printf("stars     turn %3s                moves                  \n",
-           flag.stars ? "OFF" : "ON ");
+    printf("                                  moves                  \n");
     printf("test                              p                      \n");
     printf("debug                             depth     alias for 'sd'\n");
     printf("----------------------------------------------------------------\n");

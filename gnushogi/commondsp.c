@@ -1942,11 +1942,6 @@ InputCommand(char *command)
             flag.coords = !flag.coords;
             dsp->UpdateDisplay(0, 0, 1, 0);
         }
-        else if (strcmp(s, "stars") == 0)
-        {
-            flag.stars = !flag.stars;
-            dsp->UpdateDisplay(0, 0, 1, 0);
-        }
         else if (!XSHOGI && strcmp(s, "moves") == 0)
         {
             short temp;
