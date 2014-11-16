@@ -338,7 +338,7 @@ RESET(void)
         = flag.beep = flag.rcptr
         = true;
 
-    flag.shade = flag.back = flag.musttimeout = false;
+    flag.back = flag.musttimeout = false;
     flag.gamein = false;
     GenCnt   = 0;
     GameCnt  = 0;
