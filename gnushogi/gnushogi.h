@@ -651,7 +651,6 @@ struct flags
     bool back;              /* time to make a move */
     bool rcptr;             /* enable/disable recapture heuristics */
     bool rv;                /* reverse video */
-    bool coords;            /* add coords to visual screen */
     bool material;          /* draw on lack of material */
     bool illegal;           /* illegal position */
     bool onemove;           /* timing is onemove */

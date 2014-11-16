@@ -1486,9 +1486,6 @@ control is the time for a complete game.  Input with the level command
 should be the game time and the expected number of moves in a game.  go
 command must be given.
 
-@item coords 
-show coordinates on the display (visual only).
-
 @item contempt 
 allows the value of @emph{contempt} to be modified.
 

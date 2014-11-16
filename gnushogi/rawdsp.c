@@ -319,9 +319,8 @@ Raw_help(void)
            flag.rcptr ? "OFF" : "ON ");
     printf("hashdepth                         hard      turn easy OFF\n");
     printf("contempt                          xwndw                  \n");
-    printf("rv        turn %3s                coords    turn %s\n",
-           flag.rv ? "OFF" : "ON ", flag.coords ? "OFF" : "ON");
-    printf("                                  moves                  \n");
+    printf("rv        turn %3s                moves                  \n",
+           flag.rv ? "OFF" : "ON ");
     printf("test                              p                      \n");
     printf("debug                             depth     alias for 'sd'\n");
     printf("----------------------------------------------------------------\n");
