@@ -835,7 +835,6 @@ extern short piece_distance(short side, short piece, short f, short t);
 #define RANGING_ROOK 'R'
 
 extern char GameType[2];
-void ShowGameType(void);
 
 extern unsigned short bookmaxply;
 extern unsigned int bookcount;
@@ -1037,18 +1036,8 @@ extern void  DetermineStage(short side);
 extern void  UpdateWeights(short side);
 extern int   InitMain(void);
 extern void  ExitMain(void);
-extern void  Initialize(void);
 extern void  InputCommand(char *command);
-extern void  ExitShogi(void);
-extern void  ClearScreen(void);
 extern void  SetTimeControl(void);
-extern void  SelectLevel(char *sx);
-
-extern void
-UpdateDisplay(short f,
-              short t,
-              short flag,
-              short iscastle);
 
 typedef enum
 {
@@ -1061,37 +1050,11 @@ typedef enum
 extern void  SetResponseTime(short side);
 extern void  CheckForTimeout(int score, int globalscore,
                              int Jscore, int zwndw);
-extern void  ShowSidetoMove(void);
-extern void  ShowResponseTime(void);
-extern void  ShowPatternCount(short side, short n);
-extern void  SearchStartStuff(short side);
-extern void  ShowDepth(char ch);
-extern void  TerminateSearch(int);
-extern void  ShowResults(short score, unsigned short *bstline, char ch);
-extern void  SetupBoard(void);
 extern void  algbr(short f, short t, short flags);
-extern void  OutputMove(void);
-extern void  ShowCurrentMove(short pnt, short f, short t);
 extern void  ListGame(void);
-extern void  ShowMessage(char *s, ...);
-extern void  ClearScreen(void);
-extern void  DoDebug(void);
-extern void  DoTable(short table[NO_SQUARES]);
-extern void  ShowPostnValues(void);
-extern void  ChangeXwindow(void);
-extern void  SetContempt(void);
-extern void  ChangeHashDepth(void);
-extern void  ChangeBetaWindow(void);
-extern void  GiveHint(void);
-extern void  ShowPrompt(void);
-extern void  EditBoard(void);
-extern void  help(void);
-extern void  ChangeSearchDepth(void);
 extern void  skip(void);
 extern void  skipb(void);
 extern void  EnPassant(short xside, short f, short t, short iop);
-extern void  ShowNodeCnt(long NodeCnt);
-extern void  ShowLine(unsigned short *bstline);
 extern bool  pick(short p1, short p2);
 extern short repetition(void);
 extern void  TimeCalc(void);
