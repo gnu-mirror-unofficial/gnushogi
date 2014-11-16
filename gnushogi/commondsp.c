@@ -1932,11 +1932,6 @@ InputCommand(char *command)
         {
             dsp->ChangeXwindow();
         }
-        else if (strcmp(s, "rv") == 0)
-        {
-            flag.rv = !flag.rv;
-            dsp->UpdateDisplay(0, 0, 1, 0);
-        }
         else if (!XSHOGI && strcmp(s, "moves") == 0)
         {
             short temp;

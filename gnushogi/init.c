@@ -502,7 +502,6 @@ NewGame(void)
         = true;
     flag.back = flag.musttimeout = false;
     flag.gamein = false;
-    flag.rv     = true;
 
     mycnt1 = mycnt2 = 0;
     GenCnt = NodeCnt = et0 = dither =  XCmore = 0;

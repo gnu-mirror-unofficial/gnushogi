@@ -1617,9 +1617,6 @@ backout the last level for both sides.  Equal to 2 undo's.
 causes the board display to be reversed.  That is, the Black's pieces will
 now appear at the top of the board.
 
-@item rv 
-reverse board display.
-
 @item save 
 saves a game to disk.  The program will prompt the user for a file name.
 
