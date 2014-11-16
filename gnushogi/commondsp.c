@@ -1710,10 +1710,6 @@ InputCommand(char *command)
         {
             dsp->help();
         }
-        else if (strcmp(s, "material") == 0)
-        {
-            flag.material = !flag.material;
-        }
         else if (strcmp(s, "force") == 0)
         {
             if (XSHOGI)

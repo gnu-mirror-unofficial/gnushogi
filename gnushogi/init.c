@@ -497,7 +497,7 @@ NewGame(void)
         = flag.reverse = flag.bothsides = flag.onemove = flag.force
         = false;
     flag.post &= xboard; /* xboard: do not alter post status on 'new' */
-    flag.material = flag.hash = flag.easy
+    flag.hash = flag.easy
         = flag.beep = flag.rcptr
         = true;
     flag.back = flag.musttimeout = false;

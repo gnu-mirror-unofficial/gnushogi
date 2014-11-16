@@ -291,8 +291,7 @@ Raw_help(void)
     printf("7g7f      move from 7g to 7f      quit      Exit Shogi\n");
     printf("S6h       move silver to 6h       beep      turn %s\n",
            (flag.beep) ? "OFF" : "ON");
-    printf("2d2c+     move to 2c and promote  material  turn %s\n",
-           (flag.material) ? "OFF" : "ON");
+    printf("2d2c+     move to 2c and promote\n");
     printf("P*5e      drop pawn to 5e         easy      turn %s\n",
            (flag.easy) ? "OFF" : "ON");
     printf("tsume     toggle tsume mode       hash      turn %s\n",
@@ -310,8 +309,7 @@ Raw_help(void)
     printf("xsave     pos. to xshogi file     xget      pos. from xshogi file\n");
     printf("random    randomize play          new       start new game\n");
     printf("setup                             first     \n");
-    printf("go        computer plays now      material  turn %s\n",
-           flag.material ? "OFF" : "ON");
+    printf("go        computer plays now\n");
     printf("level     time control            gamein    \n");
     printf("time      set engine clock        otime     set opponent clock\n");
     printf("Awindow                           Bwindow     \n");

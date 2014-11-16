@@ -650,7 +650,6 @@ struct flags
     bool musttimeout;       /* time to make a move */
     bool back;              /* time to make a move */
     bool rcptr;             /* enable/disable recapture heuristics */
-    bool material;          /* draw on lack of material */
     bool illegal;           /* illegal position */
     bool onemove;           /* timing is onemove */
     bool gamein;            /* timing is gamein */

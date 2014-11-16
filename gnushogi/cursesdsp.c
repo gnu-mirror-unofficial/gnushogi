@@ -409,7 +409,7 @@ Curses_help(void)
            "---------------------------------\n");
     printw("7g7f      move from 7g to 7f      quit      Exit Shogi\n");
     printw("S6h       move silver to 6h       beep      turn %s\n", (flag.beep) ? "OFF" : "ON");
-    printw("2d2c+     move to 2c and promote  material  turn %s\n", (flag.material) ? "OFF" : "ON");
+    printw("2d2c+     move to 2c and promote\n");
     printw("P*5e      drop pawn to 5e         easy      turn %s\n", (flag.easy) ? "OFF" : "ON");
     printw("tsume     toggle tsume mode       hash      turn %s\n", (flag.hash) ? "OFF" : "ON");
     printw("bd        redraw board            reverse   board display\n");

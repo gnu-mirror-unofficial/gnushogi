@@ -334,7 +334,7 @@ RESET(void)
 
     flag.post &= xboard; /* [HGM] xboard: do not clear in XBoard mode */
 
-    flag.material = flag.hash = flag.easy
+    flag.hash = flag.easy
         = flag.beep = flag.rcptr
         = true;
 
