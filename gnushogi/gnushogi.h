@@ -226,7 +226,6 @@ extern void movealgbr(short m, char *s);
 #define ctlK  0x00000100
 
 /* attack functions */
-#define Pattack(c, u)   (attack[c][u] > ctlP)
 #define Anyattack(c, u) (attack[c][u] != 0)
 
 /* hashtable flags */
